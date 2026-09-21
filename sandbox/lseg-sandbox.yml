@@ -1,0 +1,33 @@
+generated: '2026-09-21'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://developers.lseg.com/en/article-catalog/article/setup-a-simulated-real-time-optimized-environment-in-3-steps
+sources:
+- https://developers.lseg.com/en/article-catalog/article/setup-a-simulated-real-time-optimized-environment-in-3-steps
+- https://developers.lseg.com/en/article-catalog/article/introduction-to-the-refinitiv-real-time-optimized-simulator-dock
+- https://developers.lseg.com/en/video-catalog/setup-a-simulated-real-time-optimized-environment-in-3-steps
+description: Simulated Real-Time Optimized environment provided by LSEG for development and testing.
+modes:
+- name: Simulated Real-Time Optimized (Docker)
+  base_url: https://www.test.com
+  portal: Docker Hub
+  how_to_get_access: Run the Docker image refinitivapis/rtosim and use the provided certificate files (cert.pem, key.pem). Obtain tokens from
+    the simulated authentication endpoints described below.
+test_values:
+- kind: access_token
+  value: eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImJlcGpHV0dkOW44WU9VQ1Nw
+- kind: refresh_token
+  value: aa957c85-f1f2-453d-8211-adbbb30b8428
+- kind: expires_in
+  value: '600'
+- kind: access_token_v2
+  value: eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImJlcGpHV0dkOW44WU9VQ1Nw
+- kind: expires_in_v2
+  value: '7199'
+note: 'The simulated environment includes three services: RDP Authentication Service V1 (POST /auth/oauth2/v1/token on port 443), RDP Authentication
+  Service V2 (POST /auth/oauth2/v2/token on port 443), and Service Discovery (GET /streaming/pricing/v1/ on port 443). Streaming data is served
+  on TCP port 14002. No specific test‑key prefixes or time‑simulation features are documented.'
+docs:
+- https://developers.lseg.com/en/article-catalog/article/setup-a-simulated-real-time-optimized-environment-in-3-steps
+- https://developers.lseg.com/en/article-catalog/article/introduction-to-the-refinitiv-real-time-optimized-simulator-dock
+- https://developers.lseg.com/en/video-catalog/setup-a-simulated-real-time-optimized-environment-in-3-steps

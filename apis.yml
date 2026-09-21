@@ -1,23 +1,78 @@
 aid: lseg
+
 name: LSEG
-description: 'LSEG is a company surfaced via the API Evangelist harvest backlog (source: news) and added
-  to the network as a stub for full-pipeline profiling.'
+
+image: https://www.lseg.com/content/dam/lseg/en_us/images/logos/thumbnail/lseg-default-social-image.jpg.transform/rect-768/q90/image.jpg
+
+description: 'LSEG (London Stock Exchange Group) is a leading global financial markets infrastructure and data provider, offering a broad range of services including data & analytics, FTSE Russell indices, trading venues, FX, post‑trade solutions and risk intelligence. It serves customers worldwide, enabling sustainable growth and stability through trusted data and innovative technology platforms.'
+
 url: https://raw.githubusercontent.com/api-evangelist/lseg/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:news
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-09-21 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-09-21'
+
 modified: '2026-09-21'
+
 tags:
 - Company
-apis: []
+- Finance
+- Data
+- Infrastructure
+- Markets
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: WellKnown
+  url: well-known/lseg-well-known.yml
+- type: Conventions
+  url: conventions/lseg-conventions.yml
+- type: Sandbox
+  url: sandbox/lseg-sandbox.yml
+- type: TermsOfService
+  url: https://developers.lseg.com/en/terms-of-use
+- type: Support
+  url: https://support.lseg.com/s/
+- type: PrivacyPolicy
+  url: https://www.lseg.com/en/policies/privacy-statement
+- type: DeveloperPortal
+  url: https://developers.lseg.com/en
+- type: GettingStarted
+  url: https://developers.lseg.com/en/api-catalog/app-studio/app-studio-web-sdk/quickstart
+- type: Documentation
+  url: https://developers.lseg.com/
+- type: GitHubOrganization
+  url: https://github.com/LSEG
+- type: DomainSecurity
+  url: security/lseg-domain-security.yml
 - type: Website
-  url: https://lseg.com/
+  url: https://www.lseg.com/
+
+apis: []
+
+x-coverage:
+  state: unreadable
+  reason: js-rendered-docs
+  detail: Developer portal pages are rendered via JavaScript and provide no machine‑readable OpenAPI or other contract.
+  evidence:
+    - url: https://developers.lseg.com/en
+      status: 200
+  checked: 2026-09-21
+x-enrichment:
+  date: '2026-09-21'
+  status: enriched
+  artifacts_added: 6
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local

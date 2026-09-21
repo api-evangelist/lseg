@@ -1,0 +1,23 @@
+generated: '2026-09-21'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://developers.lseg.com/en/article-catalog/article/how-expand-chain-ric-using-tick-history-rest-api-python
+sources:
+- https://developers.lseg.com/en/article-catalog/article/how-expand-chain-ric-using-tick-history-rest-api-python
+- https://developers.lseg.com/en/article-catalog/article/filtering-realtime-news-with-rdp-filters
+- https://developers.lseg.com/en/article-catalog/article/lseg-data-library-for-python--news-pagination
+- https://developers.lseg.com/en/api-catalog/app-studio/app-studio-web-sdk/quickstart
+idempotency:
+  coverage: none
+  evidence: The provided pages do not describe any idempotency key or mechanism for write operations.
+pagination:
+  style: cursor
+  params:
+  - cursor
+  response_fields:
+  - meta.next
+  - meta.prev
+  evidence: News headlines endpoint returns a `meta.next` cursor string that can be passed as the `cursor` query parameter to retrieve the next
+    page of results.
+authentication: 'Bearer token passed in the `Authorization` header (e.g., `Authorization: <Your Authorization Token>`).'
+docs: https://developers.lseg.com/en/article-catalog/article/how-expand-chain-ric-using-tick-history-rest-api-python
