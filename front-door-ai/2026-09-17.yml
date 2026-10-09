@@ -1,0 +1,32 @@
+# Front Door AI Index — lseg — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: lseg
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.lseg.com
+  final_host: www.lseg.com
+  ownership: own
+  owner: lseg
+  shares_host_with:
+  - acadiasoft
+  - london-stock-exchange-group
+  - refinitiv-eikon
+  inherited_from: null
+  alias_of: null
+  verdict: scored
+  score: 3
+  band: 3
+  band_label: light
+  host_score: 3
+  density: 4.81
+  words: 624
+  tiers:
+    agentic: 0
+    core: 3
+    model: 0
+  ambiguous: 5
+  top_terms:
+    intelligence: 5
+    AI: 3
