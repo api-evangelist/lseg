@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/lseg/main/json-schema/lseg-post-tag-rs-enrich-response-schema.json",
+  "title": "PostTagRsEnrichResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/lseg-openapi-generated.yml#/components/schemas/PostTagRsEnrichResponse",
+  "type": "object",
+  "properties": {
+    "RDF/XML or JSON response": {
+      "type": "object",
+      "description": "Semantic metadata tags including aboutness tags, named entity and relationship recognition tags, and document information."
+    }
+  }
+}

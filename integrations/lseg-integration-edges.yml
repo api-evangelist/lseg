@@ -1,3 +1,19 @@
+generated: '2026-10-20'
+method: searched
+source:
+- microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+- https://zapier.com/apps/lseg/integrations
+- https://n8n.io/integrations/lseg/
+- https://composio.dev/toolkits/lseg
+- https://monid.ai/tools/lseg
+checked:
+- microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+- https://composio.dev/toolkits/lseg
+- https://monid.ai/tools/lseg
+- https://n8n.io/integrations/lseg/
+- https://zapier.com/apps/lseg/integrations
+summary: null
+marketplace_apps: []
 edges:
 - partner_name: Microsoft Teams (own)
   partner: microsoft-teams
@@ -18,9 +34,4 @@ edges:
   category: Microsoft Teams app
   publisher_verified:
   - Microsoft 365 Publisher Attestation
-generated: '2026-10-18'
-method: searched
-source:
-- microsoft-teams/integrations/microsoft-teams-integration-edges.yml
-checked:
-- microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+templates: []

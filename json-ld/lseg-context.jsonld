@@ -1,0 +1,36 @@
+{
+  "@context": {
+    "@vocab": "https://lseg.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "lseg": "https://lseg.com/schema#",
+    "PostPermidCalaisRequest": "lseg:PostPermidCalaisRequest",
+    "Content-Type": {
+      "@id": "lseg:Content-Type",
+      "@type": "xsd:string"
+    },
+    "x-ag-access-token": {
+      "@id": "lseg:x-ag-access-token",
+      "@type": "xsd:string"
+    },
+    "x-calais-selectiveTags": {
+      "@id": "lseg:x-calais-selectiveTags",
+      "@type": "xsd:string"
+    },
+    "PostPermidCalaisResponse": "lseg:PostPermidCalaisResponse",
+    "PostTagRsEnrichRequest": "lseg:PostTagRsEnrichRequest",
+    "body": {
+      "@id": "lseg:body",
+      "@type": "xsd:string"
+    },
+    "PostTagRsEnrichResponse": "lseg:PostTagRsEnrichResponse"
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "LSEG API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects LSEG's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-20) from openapi/_ae-authored/lseg-openapi-generated.yml.",
+  "dcterms:created": "2026-10-20",
+  "dcterms:source": [
+    "openapi/_ae-authored/lseg-openapi-generated.yml"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/lseg/main/json-schema/lseg-post-permid-calais-request-schema.json",
+  "title": "PostPermidCalaisRequest",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/lseg-openapi-generated.yml#/components/schemas/PostPermidCalaisRequest",
+  "type": "object",
+  "properties": {
+    "Content-Type": {
+      "type": "string",
+      "description": "Indicates the input mime type. Valid values: text/html; text/xml; text/raw; application/pdf."
+    },
+    "x-ag-access-token": {
+      "type": "string",
+      "description": "Relevant only to free Open Calais and Hosted Premium Intelligent Tagging. The value of this header is your license key."
+    },
+    "x-calais-selectiveTags": {
+      "type": "string",
+      "description": "Determines which of the Intelligent Tagging processes are triggered."
+    }
+  },
+  "required": [
+    "Content-Type",
+    "x-calais-selectiveTags"
+  ]
+}

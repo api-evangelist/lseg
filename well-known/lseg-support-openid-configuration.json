@@ -36,7 +36,9 @@
     "sfap_api",
     "address",
     "openid",
+    "semantic_layer_api",
     "profile",
+    "cmdb_discovery_api",
     "scrt_api",
     "cdp_profile_api",
     "refresh_token",
@@ -45,6 +47,7 @@
     "pwdless_login_api",
     "chatter_api",
     "mcp_api",
+    "a2a_api",
     "full",
     "forgot_password"
   ],
@@ -65,8 +68,7 @@
     "RS512",
     "ES256",
     "ES384",
-    "ES512",
-    "EdDSA"
+    "ES512"
   ],
   "display_values_supported": [
     "page",
@@ -76,8 +78,15 @@
   "token_endpoint_auth_methods_supported": [
     "client_secret_post",
     "client_secret_basic",
-    "private_key_jwt"
+    "private_key_jwt",
+    "tls_client_auth"
   ],
+  "tls_client_certificate_bound_access_tokens": true,
+  "mtls_endpoint_aliases": {
+    "token_endpoint": "https://support.lseg.com:8443/services/oauth2/token",
+    "revocation_endpoint": "https://support.lseg.com:8443/services/oauth2/revoke",
+    "introspection_endpoint": "https://support.lseg.com:8443/services/oauth2/introspect"
+  },
   "claims_supported": [
     "active",
     "address",

@@ -1,0 +1,68 @@
+name: LSEG packages
+generated: '2026-10-20'
+method: searched
+source: https://pypi.org/pypi/lseg-data/json
+packages:
+- name: lseg-data
+  registry: pypi
+  url: https://pypi.org/project/lseg-data/
+  language: Python
+  official: true
+  version: 2.1.1
+  published: '2025-04-04'
+  note: LSEG Data Library for Python; project_urls point at developers.lseg.com.
+  ownership_audit: metadata names lseg.com
+- name: lseg-analytics
+  registry: pypi
+  url: https://pypi.org/project/lseg-analytics/
+  language: Python
+  official: true
+  version: 3.0.0b1
+  published: '2025-11-06'
+  note: Author analyticssdk@lseg.com (LSEG Financial Analytics SDK).
+  ownership_audit: metadata names lseg.com
+- name: LSEG.Data
+  registry: nuget
+  url: https://www.nuget.org/packages/LSEG.Data
+  language: C#
+  official: false
+  version: 2.2.3
+  published: '2026-05-20'
+  note: LSEG Data Library for .NET; NuGet authors field "LSEG".
+  ownership_audit: 'registry metadata names neither the provider''s domain nor its GitHub org: official downgraded (harvest-packages.py --audit)'
+- name: refinitiv-data
+  registry: pypi
+  url: https://pypi.org/project/refinitiv-data/
+  language: Python
+  official: false
+  version: 1.6.2
+  published: '2024-08-02'
+  note: Predecessor Refinitiv Data Library (Refinitiv is now LSEG); superseded by lseg-data.
+  ownership_audit: 'registry metadata names neither the provider''s domain nor its GitHub org: official downgraded (harvest-packages.py --audit)'
+- name: eikon
+  registry: pypi
+  url: https://pypi.org/project/eikon/
+  language: Python
+  official: false
+  version: 1.1.18
+  published: '2023-10-04'
+  note: Eikon Data API library; home page developers.refinitiv.com.
+  ownership_audit: 'registry metadata names neither the provider''s domain nor its GitHub org: official downgraded (harvest-packages.py --audit)'
+- name: refinitiv-dataplatform
+  registry: pypi
+  url: https://pypi.org/project/refinitiv-dataplatform/
+  language: Python
+  official: false
+  version: 1.0.0a21
+  published: '2023-02-16'
+  note: Legacy RDP library, last release still an alpha.
+  ownership_audit: 'registry metadata names neither the provider''s domain nor its GitHub org: official downgraded (harvest-packages.py --audit)'
+- name: '@refinitiv-data/data'
+  registry: npm
+  url: https://www.npmjs.com/package/@refinitiv-data/data
+  language: TypeScript
+  official: true
+  version: 3.14.0-beta
+  published: '2024-03-15'
+  note: Refinitiv Data Library for TypeScript; latest dist-tag is a beta.
+  ownership_audit: metadata names lseg.com

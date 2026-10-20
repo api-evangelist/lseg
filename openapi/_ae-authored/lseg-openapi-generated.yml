@@ -1,0 +1,141 @@
+openapi: 3.1.0
+info:
+  title: LSEG API
+  version: '2026-10-20'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-20: 3 operation(s) read from 3 public documentation page(s) (each operation
+    names its page in x-source). This is not the provider''s published contract; LSEG has published no machine-readable contract that the pipeline
+    could find. Engine: anthropic.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 3
+    pages-with-code: 0
+    pages-read: 3
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-20'
+  x-generator: generate-contract-from-docs.py
+  x-engine: anthropic
+  x-sources:
+  - https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/tutorials
+  - https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/quick-start
+  - https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/documentation
+servers:
+- url: https://api-eit.refinitiv.com
+  description: Host named on developers.lseg.com Intelligent Tagging pages; 401 PermID response probed 2026-10-20
+paths:
+  /permid/calais:
+    get:
+      operationId: get_permid_calais
+      tags:
+      - Permid
+      summary: Tag unstructured text content using the Open Calais intelligent tagging service.
+      x-source: https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/tutorials
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+    post:
+      operationId: post_permid_calais
+      tags:
+      - Permid
+      summary: Tag content via HTTP REST interface to process and extract entities and relations from documents.
+      x-source: https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/quick-start
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostPermidCalaisRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostPermidCalaisResponse'
+      x-evidence:
+        kind: documentation
+  /tag/rs/enrich:
+    post:
+      operationId: post_tag_rs_enrich
+      tags:
+      - Tag
+      summary: Tag content using the Intelligent Tagging API for On Premise Intelligent Tagging.
+      x-source: https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/documentation
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        description: 'The input content type (mime type): text/html, text/xml, text/raw, or application/pdf.'
+      - name: outputFormat
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The output format for the response (e.g., xml/rdf).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostTagRsEnrichRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostTagRsEnrichResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    PostPermidCalaisRequest:
+      type: object
+      properties:
+        Content-Type:
+          type: string
+          description: 'Indicates the input mime type. Valid values: text/html; text/xml; text/raw; application/pdf.'
+        x-ag-access-token:
+          type: string
+          description: Relevant only to free Open Calais and Hosted Premium Intelligent Tagging. The value of this header is your license key.
+        x-calais-selectiveTags:
+          type: string
+          description: Determines which of the Intelligent Tagging processes are triggered.
+      required:
+      - Content-Type
+      - x-calais-selectiveTags
+    PostPermidCalaisResponse:
+      type: object
+      properties:
+        tagging response:
+          type: string
+          description: By default returned in RDF format; can be JSON format if outputFormat header is used.
+    PostTagRsEnrichRequest:
+      type: object
+      properties:
+        body:
+          type: string
+          description: The document content to be tagged (XML, HTML, raw text, or PDF binary stream).
+      required:
+      - body
+    PostTagRsEnrichResponse:
+      type: object
+      properties:
+        RDF/XML or JSON response:
+          type: object
+          description: Semantic metadata tags including aboutness tags, named entity and relationship recognition tags, and document information.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-ag-access-token
+security:
+- apiKey: []
+tags:
+- name: Permid
+- name: Tag

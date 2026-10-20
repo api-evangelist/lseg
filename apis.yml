@@ -1,40 +1,49 @@
 aid: lseg
-
 name: LSEG
-
 image: https://www.lseg.com/content/dam/lseg/en_us/images/logos/thumbnail/lseg-default-social-image.jpg.transform/rect-768/q90/image.jpg
-
-description: 'LSEG (London Stock Exchange Group) is a leading global financial markets infrastructure and data provider, offering a broad range of services including data & analytics, FTSE Russell indices, trading venues, FX, post‑trade solutions and risk intelligence. It serves customers worldwide, enabling sustainable growth and stability through trusted data and innovative technology platforms.'
-
+description: LSEG (London Stock Exchange Group) is a leading global financial markets infrastructure and data provider, offering a broad range
+  of services including data & analytics, FTSE Russell indices, trading venues, FX, post‑trade solutions and risk intelligence. It serves customers
+  worldwide, enabling sustainable growth and stability through trusted data and innovative technology platforms.
 url: https://raw.githubusercontent.com/api-evangelist/lseg/refs/heads/main/apis.yml
-
 x-type: company
-
 x-source: harvest:news
-
 x-tier: profiled
 x-tier-reason: enrichment pass 2026-09-21 (modular-v1; was harvest)
-
 specificationVersion: '0.20'
-
 created: '2026-09-21'
-
-modified: '2026-09-21'
-
+modified: '2026-10-20'
 tags:
 - Company
 - Finance
 - Data
 - Infrastructure
 - Markets
-
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
-
 common:
+- type: Spectral
+  url: rules/lseg-rules.yml
+- type: JSONLD
+  url: json-ld/lseg-context.jsonld
+- type: Vocabulary
+  url: vocabulary/lseg-vocabulary.yml
+- type: DataModel
+  url: data-model/lseg-data-model.yml
+- type: Conformance
+  url: conformance/lseg-conformance.yml
+- type: Hosts
+  url: hosts/lseg-hosts.yml
+- type: IntegrationEdges
+  url: integrations/lseg-integration-edges.yml
+- type: Vendors
+  url: vendors/lseg-vendors.yml
+- type: SDKs
+  url: packages/lseg-packages.yml
+- type: Packages
+  url: packages/lseg-packages.yml
 - type: WellKnown
   url: well-known/lseg-well-known.yml
 - type: Conventions
@@ -55,24 +64,49 @@ common:
   url: https://developers.lseg.com/
 - type: GitHubOrganization
   url: https://github.com/LSEG
+- type: GitHubOrganization
+  url: https://github.com/LSEG-API-Samples
 - type: DomainSecurity
   url: security/lseg-domain-security.yml
 - type: Website
   url: https://www.lseg.com/
-
-apis: []
-
-x-coverage:
-  state: unreadable
-  reason: js-rendered-docs
-  detail: Developer portal pages are rendered via JavaScript and provide no machine‑readable OpenAPI or other contract.
-  evidence:
-    - url: https://developers.lseg.com/en
-      status: 200
-  checked: 2026-09-21
+apis:
+- aid: lseg:lseg-api
+  name: LSEG Intelligent Tagging (Open PermID) API
+  description: 'LSEG API as documented publicly: 3 operations. Contract generated from the documentation by API Evangelist (2026-10-20); not the
+    provider''s own document.'
+  humanURL: https://developers.lseg.com/en/api-catalog/open-perm-id/intelligent-tagging-restful-api/tutorials
+  baseURL: https://api-eit.refinitiv.com
+  x-base-note: api-eit.refinitiv.com is named on LSEG's Intelligent Tagging docs and answers /permid/match with an LSEG PermID 401 'No API key
+    found in request' (probed 2026-10-20); Refinitiv is LSEG's acquired data business.
+  properties:
+  - type: OpenAPI
+    url: openapi/_ae-authored/lseg-openapi-generated.yml
+    x-provenance: generated
+  - type: JSONSchema
+    url: json-schema/lseg-post-permid-calais-request-schema.json
+  - type: JSONSchema
+    url: json-schema/lseg-post-tag-rs-enrich-response-schema.json
+  - type: JSONSchema
+    url: json-schema/lseg-post-tag-rs-enrich-request-schema.json
+  - type: JSONSchema
+    url: json-schema/lseg-post-permid-calais-response-schema.json
 x-enrichment:
-  date: '2026-09-21'
+  date: '2026-10-20'
   status: enriched
-  artifacts_added: 6
-  pass: modular-v1
-  engine: identity=local,contract=local,surfaces=local,docs=local
+  artifacts_added: 8
+  pass: local-v5
+x-coverage:
+  state: gated
+  reason: customer-only-docs
+  method: derived
+  generated: '2026-10-20'
+  generator: derive-coverage.py (pre-flight evidence)
+  detail: >-
+    the company publishes developer documentation but serves no machine-readable contract from it; its MCP
+    endpoint (support.lseg.com/mcp/v1) answers 401, so access sits behind a customer login
+  evidence:
+  - url: https://support.lseg.com/mcp/v1
+    status: 401
+  - url: https://www.lseg.com/
+    status: 200
