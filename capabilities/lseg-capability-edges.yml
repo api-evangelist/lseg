@@ -1,0 +1,93 @@
+slug: lseg
+provider: LSEG
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 7
+edges:
+- tag: Case
+  spec_file: london-stock-exchange-group-case-api-openapi.yml
+  capability_id: BC-130
+  capability_id_l1: BC-130
+  capability_name: Compliance Management
+  confidence: 0.8
+  evidence: POST /cases/screeningRequest — "Perform synchronous screening for a new case"; PUT /cases/{caseSystemId}/ongoingScreening
+    — "Enable OGS for a Case"
+  reason: Core World-Check screening case lifecycle for "on-boarding, KYC and third party due diligence"
+    — a compliance screening capability. Left at L1 because the evidence does not settle between regulatory
+    compliance and third-party/ABC due diligence sub-capabilities.
+- tag: Case
+  spec_file: london-stock-exchange-group-case-api-openapi.yml
+  capability_id: BC-1400.20
+  capability_id_l1: BC-1400
+  capability_name: Sanctions Screening Management
+  confidence: 0.8
+  evidence: Perform synchronous screening for a new case; Enable OGS for a Case; WatchlistResultSummary
+  reason: World-Check One case operations perform watchlist/name screening (sanctions, PEP, adverse media)
+    with ongoing screening and hit/result handling — screening management. Some ambiguity with KYC/CDD,
+    but the operations are screening-specific.
+- tag: Client-Watchlist
+  spec_file: london-stock-exchange-group-client-watchlist-api-openapi.yml
+  capability_id: BC-1400.20
+  capability_id_l1: BC-1400
+  capability_name: Sanctions Screening Management
+  confidence: 0.8
+  evidence: POST /reference/watchlist saveWatchlist "Maintain your Watchlist data"; PUT /reference/providers/sources/{identifier}
+    "Create or update a provider source"; schemas Entity, Name, IdentityDocument, Country
+  reason: Operations maintain client-defined watchlist entities and provider/source lists used for name
+    screening — i.e. screening list management and hit sourcing, which is Sanctions/Watchlist Screening
+    Management.
+- tag: Zfs
+  spec_file: london-stock-exchange-group-zfs-api-openapi.yml
+  capability_id: BC-130.10
+  capability_id_l1: BC-130
+  capability_name: Regulatory Compliance Management
+  confidence: 0.75
+  evidence: POST /cases/screeningRequest  screen  Perform synchronous screening for a new case; POST /reference/watchlist  saveWatchlist  Maintain
+    your Watchlist data
+  reason: Despite the opaque tag name, the operations perform customer/third-party screening against watchlists
+    with case templates and country reference data — the core of KYC/AML and third-party due-diligence
+    compliance. The candidate set has no dedicated financial-crime capability, so regulatory compliance
+    management is the closest honest fit.
+- tag: Media-Check
+  spec_file: london-stock-exchange-group-media-check-api-openapi.yml
+  capability_id: BC-130
+  capability_id_l1: BC-130
+  capability_name: Compliance Management
+  confidence: 0.7
+  evidence: POST /cases/{caseSystemId}/mediacheck/results — "Retrieve MediaCheck results"; GET /mediacheck/risks
+    — "Retrieve mediacheck risk definitions"
+  reason: Adverse-media (negative news) screening of cases against risk definitions is part of the KYC/third-party
+    due-diligence compliance process; L1 only as the evidence does not pin a sub-capability.
+- tag: Media-Check
+  spec_file: london-stock-exchange-group-media-check-api-openapi.yml
+  capability_id: BC-1300.20
+  capability_id_l1: BC-1300
+  capability_name: KYC & Customer Due Diligence Management
+  confidence: 0.7
+  evidence: POST /cases/{caseSystemId}/mediacheck/results "Retrieve MediaCheck results"; GET /mediacheck/risks
+    "Retrieve mediacheck risk definitions"; PUT .../results/review "Mark all MediaCheck news articles
+    as reviewed"
+  reason: Adverse-media (negative news) screening with risk categorisation and reviewer sign-off against
+    a case, used for "on-boarding, KYC and third party due diligence" — enhanced due diligence on customers.
+    Not sanctions-list screening, so mapped to KYC & CDD rather than BC-1400.20.
+- tag: Zfs
+  spec_file: london-stock-exchange-group-zfs-api-openapi.yml
+  capability_id: BC-1400.20
+  capability_id_l1: BC-1400
+  capability_name: Sanctions Screening Management
+  confidence: 0.7
+  evidence: POST /cases/screeningRequest screen "Perform synchronous screening for a new case"; POST /reference/watchlist
+    "Maintain your Watchlist data"; schemas ScreeningResultCollection, NewCase
+  reason: Core operation performs synchronous name screening of a new case against World-Check/watchlist
+    sources with screening results returned — name screening and hit sourcing. Bundle also includes group/reference
+    config, which dilutes the signal slightly.
