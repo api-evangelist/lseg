@@ -18,6 +18,10 @@ tags:
 - Data
 - Infrastructure
 - Markets
+- Stock Exchange
+- Market Data
+- KYC
+- Compliance
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -70,6 +74,12 @@ common:
   url: security/lseg-domain-security.yml
 - type: Website
   url: https://www.lseg.com/
+- type: Documentation
+  url: https://developers.lseg.com/en/api-catalog
+- type: APIReference
+  url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+- type: Blog
+  url: https://developers.lseg.com/en/article-catalog
 apis:
 - aid: lseg:lseg-api
   name: LSEG Intelligent Tagging (Open PermID) API
@@ -91,6 +101,245 @@ apis:
     url: json-schema/lseg-post-tag-rs-enrich-request-schema.json
   - type: JSONSchema
     url: json-schema/lseg-post-permid-calais-response-schema.json
+- aid: lseg:lseg-world-check-one-case-api
+  name: LSEG World-Check One Case API
+  description: Create, screen, update, archive, assign, link, and search screening cases; review and resolve
+    screening results; enable ongoing screening and retrieve ongoing screening updates for KYC and third-party
+    due diligence.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Screening
+  - Compliance
+  - Cases
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-case-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-case-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-media-check-api
+  name: LSEG World-Check One Media-Check API
+  description: Retrieve MediaCheck adverse-media screening results, article metadata and content, attach
+    or detach articles to cases, and mark articles as reviewed.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Screening
+  - Adverse Media
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-media-check-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-media-check-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-smart-filter-api
+  name: LSEG World-Check One Smart Filter API
+  description: Enable, disable, and retrieve the MediaCheck smart filter on screening cases.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Screening
+  - Adverse Media
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-smart-filter-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-smart-filter-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-audit-api
+  name: LSEG World-Check One Audit API
+  description: Retrieve filtered audit events for screening cases to evidence compliance workflows.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Audit
+  - Compliance
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-audit-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-audit-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-case-rating-api
+  name: LSEG World-Check One Case Rating API
+  description: Retrieve and update the risk rating on a screening case.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Risk
+  - Compliance
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-case-rating-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-case-rating-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-linked-cases-api
+  name: LSEG World-Check One Linked Cases API
+  description: Create, retrieve, and delete relationships between screening cases.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Cases
+  - Compliance
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-linked-cases-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-linked-cases-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-group-api
+  name: LSEG World-Check One Group API
+  description: Retrieve groups, case templates, and resolution toolkits that govern how cases are created
+    and results resolved.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Administration
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-group-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-group-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-user-api
+  name: LSEG World-Check One User API
+  description: List active users in the client account for case assignment.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Administration
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-user-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-user-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-reference-api
+  name: LSEG World-Check One Reference API
+  description: Reference data for screening - countries, nationalities, providers, search filters, World-Check
+    profiles and records, and PEP details.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Reference Data
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-reference-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-reference-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-client-watchlist-api
+  name: LSEG World-Check One Client Watchlist API
+  description: Maintain custom client watchlist sources and records for screening.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Watchlist
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-client-watchlist-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-client-watchlist-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-reporting-api
+  name: LSEG World-Check One Reporting API
+  description: Submit asynchronous case report requests, poll report status, and download completed reports.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Reporting
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-reporting-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-reporting-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-upcoming-api
+  name: LSEG World-Check One Upcoming API
+  description: Report status listing, report error details, and report cancellation operations.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Reporting
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-upcoming-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-upcoming-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-passport-check-api
+  name: LSEG World-Check One Passport Check API
+  description: Generate machine-readable zone (MRZ) data for passport verification.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Identity Verification
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-passport-check-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-passport-check-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-zfs-api
+  name: LSEG World-Check One Zero Footprint Screening API
+  description: Zero Footprint Screening surface - synchronous screening, groups, case templates, reference
+    data, and client watchlist maintenance without persisting case data.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-zero-footprint-screening-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Screening
+  - Zero Footprint
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-zfs-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-zfs-api-overlay.yaml
+- aid: lseg:lseg-world-check-one-api-info-api
+  name: LSEG World-Check One API Info API
+  description: Retrieve information about the public API, including the current API version.
+  humanURL: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+  baseURL: https://api-worldcheck.refinitiv.com/v2
+  tags:
+  - KYC
+  - Metadata
+  properties:
+  - type: Documentation
+    url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api/documentation
+  - type: OpenAPI
+    url: openapi/london-stock-exchange-group-api-info-api-openapi.yml
+  - type: Overlay
+    url: overlays/london-stock-exchange-group-api-info-api-overlay.yaml
 x-enrichment:
   date: '2026-10-20'
   status: enriched

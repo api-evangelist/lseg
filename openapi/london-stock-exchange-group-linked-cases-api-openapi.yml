@@ -1,0 +1,475 @@
+openapi: 3.2.0
+info:
+  title: London Stock Exchange Group LSEG World-Check One Linked…
+  description: The World-Check One API enables developers to integrate the next generation of LSEG screening capabilities into existing workflows and internal systems (such as CRMs) in order to help streamline the processes for on-boarding, KYC and third party due diligence.
+  version: 2.61.0
+  termsOfService: https://www.lseg.com/en/risk-intelligence/screening-solutions/world-check-kyc-screening/one-kyc-verification
+  contact:
+    name: LSEG World-Check One API Q&A
+    url: https://community.developers.refinitiv.com/index.html
+    email: c3r.api1@lseg.com
+  license:
+    name: Commercial
+    url: https://www.lseg.com/en/risk-intelligence/screening-solutions/world-check-kyc-screening/one-kyc-verification
+servers:
+- url: https://api-worldcheck.refinitiv.com/v2
+tags:
+- name: Linked-Cases
+  description: Operations for the linked cases domain.
+paths:
+  /cases/{caseSystemId}/relationship/{relationshipType}:
+    post:
+      operationId: getRelationshipIdentifiers
+      tags:
+      - Linked-Cases
+      summary: London Stock Exchange Group Retrieve the list of case relationships
+      description: 'Retrieve the list of case relationships with cases linked to it.
+
+
+        Relationship type strategies examples:
+
+
+        * `primary-to-subcase` : declares `caseSystemId` as a primary case and lists cases linked to it with
+
+        `primary-to-subcase` relationship type.
+
+        * `subcase-to-primary` : declares `caseSystemId` as a subcase and lists cases linked to it with
+
+        `subcase-to-primary` relationship type.'
+      parameters:
+      - name: Authorization
+        description: The authorization credentials including 'keyId', 'algorithm', 'headers', 'signature' (see 'Security and Authentication details' documentation section for more details)
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: Date
+        description: The date and time at which the message was originated in 'RFC 1123' format
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: Content-Type
+        description: The media type of the request (e.g., 'application/json')
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: Content-Length
+        description: The length of the request body in octets (8-bit bytes)
+        in: header
+        required: true
+        schema:
+          type: integer
+      - name: caseSystemId
+        in: path
+        description: System generated ID for a Case
+        required: true
+        schema:
+          type: string
+      - name: relationshipType
+        in: path
+        description: Relationship type between cases. Multiple comma separated values allowed
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - primary-to-subcase
+            - subcase-to-primary
+          uniqueItems: true
+      responses:
+        200:
+          description: Response containing the list of relationships between cases
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseRelationshipResponse'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/CaseRelationshipResponse'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/CannotReturnResponse'
+        415:
+          $ref: '#/components/responses/UnsupportedMediaType'
+        429:
+          $ref: '#/components/responses/TooManyRequests'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaseRelationshipRequest'
+        description: Request containing pagination to list case relationships.
+        required: true
+    put:
+      operationId: linkingCases
+      tags:
+      - Linked-Cases
+      summary: London Stock Exchange Group Create links between cases
+      description: 'Create links between cases based on relationship type strategy(`relationshipType`).
+
+
+        **Note:** There is a maximum number of World-Check One relationships between cases:
+
+        * Maximum 500 primary cases are allowed per a subcase.
+
+        * Maximum 50 subcases are allowed per a primary case.
+
+
+        Relationship type strategies examples:
+
+
+        * `primary-to-subcase` : declares `caseSystemId` as a primary case and cases listed in `linkedCasesRequest`
+
+        as subcases which will be linked to a primary case.
+
+        * `subcase-to-primary` : declares `caseSystemId` as a subcase and cases listed in `linkedCasesRequest`
+
+        as primary cases which will be linked to a subcase.
+
+
+        **Example HTTP request**
+
+
+        ```
+
+        {
+
+        "relatedCaseSystemIds":[
+
+        "Case System ID 1",
+
+        "Case System ID 2",
+
+        ]
+
+        }
+
+        ```'
+      parameters:
+      - name: Authorization
+        description: The authorization credentials including 'keyId', 'algorithm', 'headers', 'signature' (see 'Security and Authentication details' documentation section for more details)
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: Date
+        description: The date and time at which the message was originated in 'RFC 1123' format
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: Content-Type
+        description: The media type of the request (e.g., 'application/json')
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: Content-Length
+        description: The length of the request body in octets (8-bit bytes)
+        in: header
+        required: true
+        schema:
+          type: integer
+      - name: caseSystemId
+        in: path
+        description: System generated ID for a case.
+        required: true
+        schema:
+          type: string
+      - name: relationshipType
+        in: path
+        description: Relationship type between cases.
+        required: true
+        schema:
+          type: string
+          enum:
+          - primary-to-subcase
+          - subcase-to-primary
+      responses:
+        201:
+          description: Links between cases have been created.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/CannotReturnResponse'
+        415:
+          $ref: '#/components/responses/UnsupportedMediaType'
+        429:
+          $ref: '#/components/responses/TooManyRequests'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LinkedCasesRequest'
+        description: Related case system IDs.
+        required: true
+    delete:
+      operationId: unlinkingCases
+      tags:
+      - Linked-Cases
+      summary: London Stock Exchange Group Delete links between cases
+      description: 'Unlink cases based on relationship type strategy(`relationshipType`).
+
+
+        Relationship type strategies examples:
+
+
+        * `primary-to-subcase` : declares `caseSystemId` as a primary case and cases listed in `linkedCasesRequest`
+
+        as subcases which will be unlinked from a primary case.
+
+        * `subcase-to-primary` : declares `caseSystemId` as a subcase and cases listed in `linkedCasesRequest`
+
+        as primary cases which will be unlinked from a subcase.'
+      parameters:
+      - name: Authorization
+        description: The authorization credentials including 'keyId', 'algorithm', 'headers', 'signature' (see 'Security and Authentication details' documentation section for more details)
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: Date
+        description: The date and time at which the message was originated in 'RFC 1123' format
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: Content-Type
+        description: The media type of the request (e.g., 'application/json')
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: Content-Length
+        description: The length of the request body in octets (8-bit bytes)
+        in: header
+        required: true
+        schema:
+          type: integer
+      - name: caseSystemId
+        in: path
+        description: System generated ID for a Case.
+        required: true
+        schema:
+          type: string
+      - name: relationshipType
+        in: path
+        description: Relationship type between cases.
+        required: true
+        schema:
+          type: string
+          enum:
+          - primary-to-subcase
+          - subcase-to-primary
+      responses:
+        204:
+          description: Links between cases have been deleted.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/CannotReturnResponse'
+        415:
+          $ref: '#/components/responses/UnsupportedMediaType'
+        429:
+          $ref: '#/components/responses/TooManyRequests'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LinkedCasesRequest'
+        description: Related case system IDs.
+        required: true
+components:
+  schemas:
+    Error:
+      type: object
+      required:
+      - error
+      - cause
+      properties:
+        error:
+          type: string
+        cause:
+          type: string
+        objectId:
+          type: string
+    RelationshipIdentifiers:
+      type: object
+      description: Relationship identifer between cases
+      properties:
+        sourceCaseSystemId:
+          type: string
+          description: CaseSystemId declared as source (primary) case
+          maxLength: 192
+        targetCaseSystemId:
+          type: string
+          description: CaseSystemId declared as target (subcase) case
+          maxLength: 192
+        relationshipType:
+          type: string
+          description: Relationship type between cases.
+          enum:
+          - SUBCASE_TO_PRIMARY
+          - PRIMARY_TO_SUBCASE
+    Pagination:
+      type: object
+      description: Inbound - the pagination to apply to the query.
+      required:
+      - currentPage
+      - itemsPerPage
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        itemsPerPage:
+          type: integer
+          format: int32
+    CaseRelationshipRequest:
+      type: object
+      description: Request to hold pagination details for listing case relationships.
+      properties:
+        pagination:
+          description: Pagination details
+          $ref: '#/components/schemas/Pagination'
+    CaseRelationshipResponse:
+      type: object
+      description: The result set of relationships between cases.
+      properties:
+        pagination:
+          description: Pagination details
+          $ref: '#/components/schemas/PaginationResponseDetails'
+        totalResultCount:
+          type: integer
+          description: The total results count
+          format: int64
+        results:
+          type: array
+          description: List of relationship identifiers
+          items:
+            $ref: '#/components/schemas/RelationshipIdentifiers'
+    LinkedCasesRequest:
+      type: object
+      required:
+      - relatedCaseSystemIds
+      properties:
+        relatedCaseSystemIds:
+          type: array
+          description: Related case system IDs.
+          uniqueItems: true
+          minItems: 1
+          maxItems: 25
+          items:
+            type: string
+        note:
+          type: string
+          maxLength: 1000
+          description: Note added by the user.
+      example:
+        relatedCaseSystemIds:
+        - relatedCaseSystemId1
+        - relatedCaseSystemId2
+        - relatedCaseSystemId3
+        note: Audit note
+    PaginationResponseDetails:
+      type: object
+      description: Pagination details.
+      properties:
+        currentPage:
+          type: integer
+          description: The current page
+          format: int32
+        itemsPerPage:
+          type: integer
+          description: The number of items per page
+          format: int32
+        totalItems:
+          type: integer
+          description: Total number of items available
+          format: int64
+  responses:
+    UnexpectedError:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Error'
+        application/octet-stream:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Error'
+    CannotReturnResponse:
+      description: Cannot return response
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Error'
+        application/octet-stream:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: The request has failed an authorisation check. This can happen for a variety of reasons, such as an invalid or expired API key, an invalid HMAC signature or a request timing issue/problem with the Date header value. The API client should ensure a correctly synchronised clock is used to generate request timestamps.
+    TooManyRequests:
+      description: The API client is making too many concurrent requests, and some are being throttled. Throttled requests can be retried (with an updated request Date and HTTP signature) after a short delay.
+    UnsupportedMediaType:
+      description: For requests with payloads, an unsupported Content-Type was specified. The World-Check One API only supports a content type of application/json.
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Error'
+        application/octet-stream:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Error'
+externalDocs:
+  description: Refer to the LSEG Developer Portal for additional documentation on the World-Check One API.
+  url: https://developers.lseg.com/en/api-catalog/customer-and-third-party-screening/world-check-one-api
+x-tagGroups:
+- name: Upcoming Features and Changes
+  tags:
+  - upcoming
+- name: Zero Footprint Screening
+  tags:
+  - zfs
+- name: Case Management and Audit
+  tags:
+  - api-info
+  - reference
+  - group
+  - case
+  - audit
+  - media-check
+  - client-watchlist
+  - user
+  - passport-check
+  - linked-cases
+  - case-rating
+  - smart-filter
+  - reporting
