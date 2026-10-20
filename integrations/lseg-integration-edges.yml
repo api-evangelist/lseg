@@ -12,6 +12,9 @@ checked:
 - https://monid.ai/tools/lseg
 - https://n8n.io/integrations/lseg/
 - https://zapier.com/apps/lseg/integrations
+- https://app.snowflake.com/marketplace/providers
+- https://aws.amazon.com/marketplace/search/results?FULFILLMENT_OPTION_TYPE=DATA_EXCHANGE
+- https://marketplace.databricks.com/
 summary: null
 marketplace_apps: []
 edges:
@@ -34,4 +37,89 @@ edges:
   category: Microsoft Teams app
   publisher_verified:
   - Microsoft 365 Publisher Attestation
+- partner_name: Databricks Marketplace
+  partner: databricks
+  partner_match: aggregator
+  type: marketplace
+  marketplace: databricks-marketplace
+  channel: distribution
+  relationship: distribution-channel
+  direction: third-party
+  evidence: https://marketplace.databricks.com/provider/df05ca6b-a858-4f66-8532-28c47b30e4c3
+  category: data product listing
+  contract_reference:
+    register: Databricks Marketplace (marketplace.databricks.com/api/2.0/public-marketplace-providers + public-marketplace-listings)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: LSEG
+    matched_domain: lseg.com
+    matched_by: domain+name-among-holders
+    listings: 6
+    sample_listings:
+    - LSEG Historical Fixed Income Analytics – Government, Corporate, and Taxable Municipal Bonds.
+    - LSEG Lipper on Databricks
+    - 'LSEG Loan Connector: LPC'
+    - LSEG MCP
+    - LSEG Tick History
+    signal_note: 'participation: the provider lists data products on this marketplace; counts are context'
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+- partner_name: AWS Data Exchange
+  partner: amazon-data-exchange
+  partner_match: aggregator
+  type: marketplace
+  marketplace: amazon-data-exchange-marketplace
+  channel: distribution
+  relationship: distribution-channel
+  direction: third-party
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=32c6e5ae-eb02-4678-88ec-3a7a81c3f980
+  category: data product listing
+  contract_reference:
+    register: AWS Data Exchange (AWS Marketplace discovery search, FULFILLMENT_OPTION_TYPE=DATA_EXCHANGE + seller-profile
+      sellerWebsiteUrl)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: LSEG
+    matched_domain: lseg.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_listings:
+    - ESG LSEG
+    signal_note: 'participation: the provider lists data products on this marketplace; counts are context'
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
+  publisher_verified:
+  - Deployed on AWS
+  - Standard Data Agreement
+- partner_name: Snowflake Marketplace
+  partner: snowflake
+  partner_match: aggregator
+  type: marketplace
+  marketplace: snowflake-marketplace
+  channel: distribution
+  relationship: distribution-channel
+  direction: third-party
+  evidence: https://app.snowflake.com/marketplace/providers/GZTDZWHIIX
+  category: data product listing
+  contract_reference:
+    register: Snowflake Marketplace providers (app.snowflake.com/marketplace/providers, rendered; names only, Wikidata
+      P856 identity step)
+    spec_file: null
+    role: data-marketplace-seller
+    registered_name: LSEG
+    matched_domain: lseg.com
+    matched_by: domain+name-among-holders
+    listings: 8
+    sample_listings: []
+    signal_note: 'participation: the provider lists data products on this marketplace; counts are context'
+    detected_by: sweep-data-marketplaces.py
+    detected: '2026-10-20'
+    identity_source: wikidata
+    identity_note: wikidata P856 lseg.com for 'LSEG' (labelled identity step)
+  detected_by: sweep-data-marketplaces.py
+  detected: '2026-10-20'
 templates: []
