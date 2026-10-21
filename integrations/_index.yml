@@ -101,3 +101,15 @@
     identity_note: wikidata P856 lseg.com for 'LSEG' (labelled identity step)
   status: not-a-workflow
   arazzo: null
+- slug: lseg-cboe-global-markets
+  label: Cboe Global Markets
+  partner: cboe
+  partner_name: Cboe Global Markets
+  category: Cboe market data vendor
+  type: coverage
+  channel: provider-built
+  evidence: https://www.cboe.com/market_data_services/vendors/
+  source: edge
+  relationship: connector-coverage
+  status: not-a-workflow
+  arazzo: null
